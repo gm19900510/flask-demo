@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>flask-demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+    <script>
+  $(document).ready(function(){
+    $(".download").click(function(){
+       window.open("/download");
+    });
+     $(".export").click(function(){
+       window.open("/export");
+    });
+  });
+
+    </script>
+</head>
+<body>
+
+<div class="container mt-3">
+    <button type="button" class="btn btn-link download">测试下载</button>
+    <button type="button" class="btn btn-link export">测试导出</button>
+</div>
+
+</body>
+</html>
