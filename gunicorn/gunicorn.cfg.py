@@ -1,21 +1,21 @@
-# gunicorn.conf.py
+# gunicorn.cfg.py
 import logging
 import logging.handlers
 from logging.handlers import WatchedFileHandler
 import os
 import multiprocessing
 
-bind = '0.0.0.0:8881'  #绑定ip和端口号
+bind = '0.0.0.0:8881'  # 绑定ip和端口号
 
-backlog = 512 #监听队列
+backlog = 512  # 监听队列
 timeout = 30  # 响应耗时（单位为秒）
 
-worker_class = 'gevent' #使用gevent模式，还可以使用sync 模式，默认的是sync模式
-workers = multiprocessing.cpu_count() * 2 + 1    #进程数
-threads = 2 #指定每个进程开启的线程数
+worker_class = 'gevent'  # 使用gevent模式，还可以使用sync 模式，默认的是sync模式
+workers = multiprocessing.cpu_count() * 2 + 1  # 进程数
+threads = 2  # 指定每个进程开启的线程数
 
-#loglevel = 'debug' #日志级别，这个日志级别指的是错误日志的级别，而访问日志的级别无法设置
-#access_log_format = '%(t)s %(p)s %(h)s "%(r)s" %(s)s %(L)s %(b)s %(f)s" "%(a)s"'    #设置gunicorn访问日志格式，错误日志无法设置
+# loglevel = 'debug' #日志级别，这个日志级别指的是错误日志的级别，而访问日志的级别无法设置
+# access_log_format = '%(t)s %(p)s %(h)s "%(r)s" %(s)s %(L)s %(b)s %(f)s" "%(a)s"'    #设置gunicorn访问日志格式，错误日志无法设置
 
 """
 其每个选项的含义如下：
@@ -33,18 +33,19 @@ D          request time in microseconds
 L          request time in decimal seconds
 p          process ID
 """
-#accesslog = "./logs/access.log"      #访问日志文件
-#errorlog = "./logs/error.log"        #错误日志文件
+# accesslog = "./logs/access.log"      #访问日志文件
+# errorlog = "./logs/error.log"        #错误日志文件
+
 logconfig_dict = {
     "version": 1,
     "disable_existing_loggers": False,
 
-    "root": {"level": "INFO", "handlers": ["error_file", "access_file"]},
+    "root": {"level": "DEBUG", "handlers": ["console", "error_file", "access_file"]},
     "loggers": {
         "gunicorn.error": {
             "level": "ERROR",  # 打日志的等级可以换的，下面的同理
             "handlers": ["error_file"],  # 对应下面的键
-            "propagate": 1,
+            "propagate": 0,
             "qualname": "gunicorn.error"
         },
 
@@ -70,6 +71,11 @@ logconfig_dict = {
             "backupCount": 1,
             "formatter": "generic",
             "filename": "./logs/access.log",
+        },
+        'console': {
+            'class': 'logging.StreamHandler',
+            'level': 'DEBUG',
+            'formatter': 'generic'
         }
     },
     "formatters": {
@@ -84,4 +90,3 @@ logconfig_dict = {
         }
     }
 }
-
