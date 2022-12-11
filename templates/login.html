@@ -10,20 +10,19 @@
 <body>
 <form action="/login" method="POST">
     <div class="container-fluid p-5 bg-primary text-white text-center">
-        <h1>用户登录</h1>
+        <h1>数据分析平台</h1>
     </div>
-
-    <div class="container mt-5">
-        <div class="row">
-            <h3>用户名</h3>
-            <input type="text" name="username">
+    <div class="container mt-3">
+        <div class="mb-3 mt-3">
+            <label for="username" class="form-label">用户名:</label>
+            <input type="username" class="form-control" id="username" placeholder="Enter username" name="username">
         </div>
-        <div class="row">
-            <h3>密码</h3>
-            <input type="password" name="pwd">
+        <div class="mb-3">
+            <label for="pwd" class="form-label">密码:</label>
+            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
         </div>
         <div class="row mt-5">
-            <input type="submit" value="登录">
+            <input type="submit" value="登录" class="btn btn-primary">
         </div>
     </div>
 </form>

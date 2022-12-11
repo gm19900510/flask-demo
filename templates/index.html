@@ -10,22 +10,35 @@
 
     <script>
   $(document).ready(function(){
-    $(".download").click(function(){
-       window.open("/download");
+    $(".sales-upload").click(function(){
+       window.open("/sales/upload");
     });
-     $(".export").click(function(){
-       window.open("/export");
+
+    $(".stock-upload").click(function(){
+       alert("功能正在开发中敬请期待！");
+    });
+
+    $(".top-upload").click(function(){
+       alert("功能正在开发中敬请期待！");
+    });
+
+    $(".download").click(function(){
+       window.open("/export/page");
     });
   });
+
 
     </script>
 </head>
 <body>
-
 <div class="container mt-3">
-    <button type="button" class="btn btn-link download">测试下载</button>
-    <button type="button" class="btn btn-link export">测试导出</button>
+    <h2>功能菜单</h2>
+    <div class="container mt-3">
+        <button type="button" class="btn btn-primary btn-lg sales-upload">销售数据上传</button>
+        <button type="button" class="btn btn-primary btn-lg stock-upload btn-secondary">库存数据上传</button>
+        <button type="button" class="btn btn-primary btn-lg top-upload btn-secondary">Top款色数据上传</button>
+        <button type="button" class="btn btn-info btn-lg download">分析数据下载</button>
+    </div>
 </div>
-
 </body>
 </html>

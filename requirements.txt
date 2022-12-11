@@ -1,4 +1,4 @@
-Flask==2.0.2
+pip
 Flask_Cors==3.0.10
 pandas==1.4.2
 PyMySQL==1.0.2
@@ -9,4 +9,5 @@ gunicorn
 greenlet
 eventlet
 gevent
+pypinyin
 
