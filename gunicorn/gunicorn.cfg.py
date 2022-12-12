@@ -63,6 +63,7 @@ logconfig_dict = {
             "backupCount": 1,  # 备份多少份，经过测试，最少也要写1，不然控制不住大小
             "formatter": "generic",  # 对应下面的键
             # "mode": "w+",
+            "level": "ERROR",
             "filename": "./logs/error.log"  # 打日志的路径
         },
         "access_file": {
@@ -70,6 +71,7 @@ logconfig_dict = {
             "maxBytes": 1024 * 1024 * 50,
             "backupCount": 1,
             "formatter": "generic",
+            "level": "INFO",
             "filename": "./logs/access.log",
         },
         'console': {

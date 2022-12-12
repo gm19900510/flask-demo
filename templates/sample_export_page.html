@@ -11,7 +11,11 @@
     <script>
   $(document).ready(function(){
      $(".export").click(function(){
-       window.open("/export?date="+$("#date").val());
+       if($("#date").val()==""){
+            alert("数据日期不能为空！");
+            return false;
+       }
+       window.open("/sample/export?date="+$("#date").val());
     });
   });
 
@@ -22,7 +26,7 @@
     </script>
 </head>
 <div class="container mt-3">
-    <h2>分析数据下载</h2>
+    <h2>出样行为数据下载</h2>
     <form action="">
         <div class="mb-3 mt-3">
             <label for="date" class="form-label">数据日期:</label>

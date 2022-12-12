@@ -2,18 +2,18 @@ from flask import Flask, render_template, request
 import argparse
 from flask_cors import CORS
 from views.sales_upload import sales_upload_app
-from views.pandas_export import pandas_export_app
+from views.sample_export import sample_export_app
 from views.xlwt_export import xlwt_export_app
 
 app = Flask(__name__)
 # r'/*' 是通配符，让本服务器所有的 URL 都允许跨域请求
 CORS(app, resources=r'/*')
-app.config['MAX_CONTENT_LENGTH'] = 20 * 1024 * 1024
+app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024
 app.config['UPLOAD_EXTENSIONS'] = ['doc/xls', 'zip']
 app.config['UPLOAD_PATH'] = 'uploads'
 
 app.register_blueprint(sales_upload_app)
-app.register_blueprint(pandas_export_app)
+app.register_blueprint(sample_export_app)
 app.register_blueprint(xlwt_export_app)
 
 

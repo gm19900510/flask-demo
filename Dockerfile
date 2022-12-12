@@ -8,5 +8,5 @@ WORKDIR /flask-demo
 
 EXPOSE 8881
 
-CMD ["gunicorn", "app:app", "-c", "./gunicorn/gunicorn.cfg.py"]
+CMD ["gunicorn", "main:app", "-c", "./gunicorn/gunicorn.cfg.py"]
 

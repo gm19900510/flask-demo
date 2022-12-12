@@ -3,14 +3,18 @@ from sqlalchemy import create_engine
 import pandas as pd
 from io import BytesIO
 from urllib.parse import quote
+import logging
 
-pandas_export_app = Blueprint('pandas_export', __name__)
+sample_export_app = Blueprint('sample_export', __name__)
 
 engine = create_engine('mysql+pymysql://adbonline:!Mtt2020@am-2zergx17v1uk99z1w90650o.ads.aliyuncs.com/adb')
+
+logger = logging.getLogger()
 
 
 # 利用create_engine和pd查询数据库数据返回查询结果
 def engine_select_db(date):
+    logging.info('出样行为数据日期：%s', date)
     file = BytesIO()
     sql = '''       
         with display_tab as (
@@ -48,7 +52,7 @@ def engine_select_db(date):
     return file.getvalue()
 
 
-@pandas_export_app.route("/export")  # 利用pd生成Excel文件并流式导出
+@sample_export_app.route("/sample/export")  # 利用pd生成Excel文件并流式导出
 def export():
     # 接收处理json数据请求
     date = request.args.get('date')
@@ -58,6 +62,7 @@ def export():
         headers={"Content-Disposition": "attachment;filename={0}".format(quote(date + "数据.xlsx"))}
     )
 
-@pandas_export_app.route("/export/page")  #调整导出页面
+
+@sample_export_app.route("/sample/export/page")  # 调整导出页面
 def export_page():
-    return render_template("export_page.html")  # 默认首页
+    return render_template("sample_export_page.html")  # 默认首页
